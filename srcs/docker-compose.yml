@@ -24,10 +24,10 @@ services:
       context: ./requirements/mariadb
       dockerfile: Dockerfile
       args:
-        MYSQL_NAME: ${MYSQL_NAME}
-        MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-        MYSQL_USER: ${MYSQL_USER}
-        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+        DB_NAME: ${MYSQL_NAME}
+        DB_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+        DB_USER: ${MYSQL_USER}
+        DB_PASSWORD: ${MYSQL_PASSWORD}
           # ports:
           # - "3306:3306"
     container_name: mariadb
@@ -42,10 +42,10 @@ services:
       context: ./requirements/wordpress
       dockerfile: Dockerfile
       args:
-        MYSQL_NAME: ${MYSQL_NAME}
-        MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-        MYSQL_USER: ${MYSQL_USER}
-        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+        DB_NAME: ${MYSQL_NAME}
+        DB_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+        DB_USER: ${MYSQL_USER}
+        DB_PASSWORD: ${MYSQL_PASSWORD}
     container_name: wordpress
     depends_on:
       - mariadb

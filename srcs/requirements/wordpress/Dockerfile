@@ -1,10 +1,10 @@
 FROM	alpine:3.16
 
 ARG	PHP_VERSION=8 \
-	MYSQL_NAME \
-	MYSQL_ROOT_PASSWORD \
-	MYSQL_USER \
-	MYSQL_PASSWORD
+	DB_NAME \
+	DB_ROOT_PASSWORD \
+	DB_USER \
+	DB_PASSWORD
 
 RUN	apk update && apk upgrade && apk add --no-cache \
 	php${PHP_VERSION} \
