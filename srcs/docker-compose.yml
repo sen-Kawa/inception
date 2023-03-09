@@ -7,7 +7,7 @@ services:
       context: ./requirements/nginx
       dockerfile: Dockerfile
     ports:
-      - 443:443
+      - "443:443"
     container_name: nginx
     depends_on:
       - wordpress
@@ -28,10 +28,12 @@ services:
         MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
         MYSQL_USER: ${MYSQL_USER}
         MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-    ports:
-      - 3306:3306
+          # ports:
+          # - "3306:3306"
     container_name: mariadb
     restart: always
+    volumes:
+      - db-volume:/var/lib/mysql
     networks:
       - inception
 
