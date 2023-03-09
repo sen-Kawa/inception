@@ -1,6 +1,7 @@
 version: '3'
 
 services:
+
   nginx:
     build:
       context: ./requirements/nginx
@@ -27,3 +28,19 @@ services:
       - 3306:3306
     container_name: mariadb
     restart: always
+
+  wordpress:
+    build:
+      context: ./requirements/wordpress
+      dockerfile: Dockerfile
+      args:
+        MYSQL_NAME: ${MYSQL_NAME}
+        MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+        MYSQL_USER: ${MYSQL_USER}
+        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    container_name: wordpress
+    depends_on:
+      - mariadb
+    restart: always
+    volumes:
+      - wp-volume: /var/www/
