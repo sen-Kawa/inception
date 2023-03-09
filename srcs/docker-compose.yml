@@ -13,3 +13,17 @@ services:
       - ./requirements/nginx/tools:/etc/nginx/ssl/
       - /home/${USER}/simple_docker_nginx_html/public/html:/var/www/
     restart: always
+
+  mariadb:
+    build:
+      context: ./requirements/mariadb
+      dockerfile: Dockerfile
+      args:
+        MYSQL_NAME: ${MYSQL_NAME}
+        MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+        MYSQL_USER: ${MYSQL_USER}
+        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - 3306:3306
+    container_name: mariadb
+    restart: always
