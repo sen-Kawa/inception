@@ -51,7 +51,7 @@ services:
     networks:
       - inception
     volumes:
-      - wp-volume: /var/www/
+      - wp-volume:/var/www/
 
 volumes:
   wp-volume:
