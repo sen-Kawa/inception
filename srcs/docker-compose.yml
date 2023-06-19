@@ -55,6 +55,17 @@ services:
     volumes:
       - wp-volume:/var/www/
 
+  redis:
+    build:
+      context: ./requirements/bonus/redis
+      dockerfile: Dockerfile
+    container_name: redis
+    ports:
+      - "6379:6379"
+    restart: always
+    networks:
+      - inception
+
 volumes:
   wp-volume:
     driver_opts:
