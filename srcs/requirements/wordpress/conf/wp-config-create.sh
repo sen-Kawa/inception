@@ -9,6 +9,7 @@ define( 'WP_DEBUG_DISPLAY', true );
 define( 'DB_NAME', '${DB_NAME}' );
 define( 'DB_USER', '${DB_USER}' );
 define( 'DB_PASSWORD', '${DB_PASSWORD}' );
+define( 'DB_ROOT_PASSWORD', '${DB_ROOT_PASSWORD}' );
 define( 'DB_HOST', 'mariadb' );
 define( 'DB_CHARSET', 'utf8' );
 define( 'DB_COLLATE', '' );

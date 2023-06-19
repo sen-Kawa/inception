@@ -27,9 +27,10 @@ services:
         DB_NAME: ${DB_NAME}
         DB_USER: ${DB_USER}
         DB_PASSWORD: ${DB_PASSWORD}
-          # ports:
-          # - "3306:3306"
+        DB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
     container_name: mariadb
+    ports:
+      - "3306:3306"
     restart: always
     volumes:
       - db-volume:/var/lib/mysql
@@ -44,6 +45,7 @@ services:
         DB_NAME: ${DB_NAME}
         DB_USER: ${DB_USER}
         DB_PASSWORD: ${DB_PASSWORD}
+        DB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
     container_name: wordpress
     depends_on:
       - mariadb

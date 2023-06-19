@@ -2,6 +2,7 @@ FROM	alpine:3.16
 
 ARG	DB_NAME \
 	DB_USER \
+	DB_ROOT_PASSWORD \
 	DB_PASSWORD
 
 RUN	apk update && apk add --no-cache mariadb mariadb-client
@@ -20,7 +21,7 @@ RUN	mysql_install_db --user=mysql --datadir=/var/lib/mysql
 
 EXPOSE	3306
 
-COPY	conf/create_db.sh .
+COPY	/conf/create_db.sh .
 RUN	sh create_db.sh && rm create_db.sh
 
 USER	mysql
