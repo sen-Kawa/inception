@@ -8,7 +8,7 @@ all:
 build:
 	@printf "Building configuration ${name}...\n"
 	@bash srcs/requirements/wordpress/tools/make_dir.sh
-	@docker-compose -f ./srcs/docker-compose.yml --env-file srcs/.env up -d --build
+	@docker-compose -f ./srcs/docker-compose.yml  --log-level DEBUG --env-file srcs/.env up -d --build
 
 down:
 	@printf "Stopping configuration ${name}...\n"
