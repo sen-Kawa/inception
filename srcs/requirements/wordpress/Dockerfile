@@ -32,11 +32,15 @@ ARG	PHP_VERSION=81 \
 
 WORKDIR	/var/www
 
-RUN	wget https://wordpress.org/latest.zip && \
-	unzip latest.zip && \
-	cp -rf wordpress/* . && \
-	rm -rf wordpress latest.zip
+RUN	wget https://wordpress.org/latest.zip && unzip latest.zip && \
+	cp -rf wordpress/* . && rm -rf wordpress latest.zip
+	
+RUN	wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
+	chmod +x wp-cli.phar && mv wp-cli.phar /usr/local/bin/wp
+	
+COPY	./conf/wp-config-create.sh .
 
-COPY	./conf/wp-config-create.sh /tmp/configure.sh
+RUN	sh wp-config-create.sh && rm wp-config-create.sh && \
+	chmod -R 0777 wp-content/
 
-ENTRYPOINT ["sh", "/tmp/configure.sh"]
+CMD	["/usr/sbin/php-fpm81", "-F"]
