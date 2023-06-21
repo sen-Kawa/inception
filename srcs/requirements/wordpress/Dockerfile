@@ -7,6 +7,7 @@ ARG	PHP_VERSION=81 \
 	DB_PASSWORD
 
  RUN	apk update && apk upgrade && apk add --no-cache \
+	mariadb-client \
  	php${PHP_VERSION} \
  	php${PHP_VERSION}-fpm \
  	php${PHP_VERSION}-mysqli \
@@ -20,6 +21,7 @@ ARG	PHP_VERSION=81 \
  	php${PHP_VERSION}-xml \
  	php${PHP_VERSION}-zip \
  	php${PHP_VERSION}-redis \
+ 	php-phar \
  	wget \
  	unzip && \
  	sed -i "s|listen = 127.0.0.1:9000|listen = 9000|g" \
@@ -43,4 +45,6 @@ COPY	./conf/wp-config-create.sh .
 RUN	sh wp-config-create.sh && rm wp-config-create.sh && \
 	chmod -R 0777 wp-content/
 
-CMD	["/usr/sbin/php-fpm81", "-F"]
+COPY	./conf/install.sh .
+
+# CMD	/usr/sbin/php-fpm81 -F
