@@ -48,9 +48,6 @@ services:
     depends_on:
       - mariadb
     restart: always
-      #volume: ./conf/install.sh:/var/www/install.sh
-    entrypoint: sh -c "/usr/sbin/php-fpm81 -F && cd /var/www/ && sh install.sh"
-      #    entrypoint: cd /var/www && sh install.sh
     tty: true
     networks:
       - inception

@@ -47,4 +47,5 @@ RUN	sh wp-config-create.sh && rm wp-config-create.sh && \
 
 COPY	./conf/install.sh .
 
+ENTRYPOINT	["sh","install.sh"]
 # CMD	/usr/sbin/php-fpm81 -F
