@@ -21,8 +21,7 @@ re:	down
 clean:	down
 	@printf "Cleaning configuration ${name}...\n"
 	@docker system prune -a
-	@sudo rm -rf ~/data/wordpress/*
-	@sudo rm -rf ~/data/mariadb/*
+	@sudo rm -rf ~/data
 
 fclean:
 	@printf "Total cleaning of all configurations\n"
